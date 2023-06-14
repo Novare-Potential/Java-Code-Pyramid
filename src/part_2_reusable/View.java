@@ -16,7 +16,7 @@ public class View {
 
     // Methods
     public void showError() {
-        System.out.println("Invalid number ⚠️");
+        System.out.println("Sorry, please try again");
     }
 
     public void update(List<Product> products, List<Currency> currencies, Currency selectedCurrency) {

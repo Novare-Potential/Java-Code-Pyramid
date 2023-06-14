@@ -23,7 +23,7 @@ public class Controller {
 
             model.setSelectedCurrency(model.getCurrencies().get(selectedOption - 1));
         }
-        catch (NumberFormatException | IndexOutOfBoundsException  exception) {
+        catch (NumberFormatException | IndexOutOfBoundsException exception) {
             view.showError();
         }
 
