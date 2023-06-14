@@ -1,4 +1,4 @@
-package part_2_reusable_bad;
+package part_2_reusable;
 
 public class Project {
     public Project() {

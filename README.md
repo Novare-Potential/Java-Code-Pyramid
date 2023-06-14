@@ -83,7 +83,7 @@ That is why reusability is an essential concept that should guide your software 
 
 We will look at our previous example and expand upon it by adding a currency converter to handle our inventory's pricing in multiple countries:
 
-[Right click and choose open in a new tab](src/part_2_reusable_bad/Project.java)
+[Right click and choose open in a new tab](src/part_2_reusable/Project.java)
 
 This code works, **but merely working is not the point of coding**. That's why we need to look at this with a stronger lens than just analyzing if it works and it's readable. We have to see if it's reusable. Do you notice any issues?
 

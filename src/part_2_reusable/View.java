@@ -1,7 +1,7 @@
-package part_2_reusable_bad;
+package part_2_reusable;
 
-import part_2_reusable_bad.records.Currency;
-import part_2_reusable_bad.records.Product;
+import part_2_reusable.records.Currency;
+import part_2_reusable.records.Product;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class View {
     }
 
     public void showPrompt() {
-        System.out.println("Choose a currency between 1-5"); // Refactor, hard coded
+        System.out.println("Choose a currency between 1-5");
         System.out.print("Choose an option and then press enter: ");
     }
 

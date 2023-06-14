@@ -1,7 +1,7 @@
-package part_2_reusable_bad;
+package part_2_reusable;
 
-import part_2_reusable_bad.records.Currency;
-import part_2_reusable_bad.records.Product;
+import part_2_reusable.records.Currency;
+import part_2_reusable.records.Product;
 
 import java.util.List;
 

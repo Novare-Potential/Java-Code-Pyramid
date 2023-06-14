@@ -1,6 +1,5 @@
-package part_2_reusable_bad;
+package part_2_reusable;
 
-import java.util.Currency;
 import java.util.Scanner;
 
 public class Controller {
