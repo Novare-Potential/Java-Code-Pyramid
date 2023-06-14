@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Model {
     // Properties
-    private List<Product> inventory = List.of(
+    private List<Product> products = List.of(
             new Product(0,"Flashlight", "🔦", "A really great flashlight", 100, "usd"),
             new Product(1,"Tin can", "🥫", "Pretty much what you would expect from a tin can", 32, "usd"),
             new Product(2,"Cardboard Box", "📦", "It holds things", 5, "usd")
@@ -23,8 +23,8 @@ public class Model {
     private Currency selectedCurrency = currencies.get(0);
 
     // Methods
-    public List<Product> getInventory() {
-        return inventory;
+    public List<Product> getProducts() {
+        return products;
     }
 
     public List<Currency> getCurrencies() {

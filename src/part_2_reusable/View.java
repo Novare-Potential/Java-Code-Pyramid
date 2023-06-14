@@ -2,13 +2,14 @@ package part_2_reusable;
 
 import part_2_reusable.records.Currency;
 import part_2_reusable.records.Product;
+import part_2_reusable.utilities.CurrencyConverter;
 
 import java.util.List;
 
 public class View {
-    public View(List<Product> inventory, List<Currency> currencies, Currency selectedCurrency) {
+    public View(List<Product> products, Currency selectedCurrency) {
         System.out.println("Part 2: Reusable 🟢");
-        generateTable(inventory);
+        generateTable(products, selectedCurrency);
         showPrompt();
     }
 
@@ -22,23 +23,23 @@ public class View {
         System.out.print("Choose an option and then press enter: ");
     }
 
-    private void generateTable(List<Product> inventory) {
+    public void generateTable(List<Product> products, Currency selectedCurrency) {
         String header = "| Product         | Image | Description                                        | Price |%n";
-        String border = "+-----------------+-------+----------------------------------------------------+-------+%n";
-        String tableFormat = "| %-15s | %-5s | %-50s | %-5d |%n";
+        String rowFormat = "| %-15s | %-5s | %-50s | %-5s |%n";
+        String borderFormat = "+-----------------+-------+----------------------------------------------------+-------+%n";
 
-        System.out.format(border);
+        System.out.format(borderFormat);
         System.out.format(header);
-        System.out.format(border);
+        System.out.format(borderFormat);
 
-        for (Product item : inventory) {
+        for (Product item : products) {
             String product = item.product();
             String image = item.image();
             String description = item.description();
-            int price = item.price();
+            String price = CurrencyConverter.convert(item.price(), selectedCurrency);
 
-            System.out.format(tableFormat, product, image, description, price);
-            System.out.format(border);
+            System.out.format(rowFormat, product, image, description, price);
+            System.out.format(borderFormat);
         }
     }
 }

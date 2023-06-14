@@ -21,12 +21,13 @@ public class Controller {
         try {
             int selectedOption = Integer.parseInt(input.trim());
 
-            model.setSelectedCurrency(model.getCurrencies().get(selectedOption));
+            model.setSelectedCurrency(model.getCurrencies().get(selectedOption - 1));
         }
         catch (NumberFormatException | IndexOutOfBoundsException exception) {
             view.showError();
         }
 
+        view.generateTable(model.getProducts(), model.getSelectedCurrency());
         view.showPrompt();
         requestInput();
     }
