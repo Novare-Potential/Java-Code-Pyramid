@@ -14,6 +14,7 @@ public class ProjectModel {
     private final List<ItemInventory> inventory = PoolInventory.getInventory();
     private ItemCurrency selectedCurrency = currencies.get(0);
 
+
     // Getters
     public List<ItemInventory> getInventory() {
         return inventory;
