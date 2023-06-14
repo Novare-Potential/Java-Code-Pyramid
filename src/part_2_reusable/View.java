@@ -6,20 +6,10 @@ import part_2_reusable.records.Product;
 import java.util.List;
 
 public class View {
-    String header = "| Product         | Image | Description                                        | Price |%n";
-    String border = "+-----------------+-------+----------------------------------------------------+-------+%n";
-
     public View(List<Product> inventory, List<Currency> currencies, Currency selectedCurrency) {
-        generateHeaders();
-        generateRows(inventory);
+        System.out.println("Part 2: Reusable 🟢");
+        generateTable(inventory);
         showPrompt();
-    }
-
-    private void generateHeaders() {
-        System.out.println("1 Readable Good ✅");
-        System.out.format(border);
-        System.out.format(header);
-        System.out.format(border);
     }
 
     // Methods
@@ -32,9 +22,14 @@ public class View {
         System.out.print("Choose an option and then press enter: ");
     }
 
-
-    private void generateRows(List<Product> inventory) {
+    private void generateTable(List<Product> inventory) {
+        String header = "| Product         | Image | Description                                        | Price |%n";
+        String border = "+-----------------+-------+----------------------------------------------------+-------+%n";
         String tableFormat = "| %-15s | %-5s | %-50s | %-5d |%n";
+
+        System.out.format(border);
+        System.out.format(header);
+        System.out.format(border);
 
         for (Product item : inventory) {
             String product = item.product();
