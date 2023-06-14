@@ -27,7 +27,6 @@ public class Controller {
             view.showError();
         }
 
-        view.generateTable(model.getProducts(), model.getSelectedCurrency());
         view.showPrompt();
         requestInput();
     }

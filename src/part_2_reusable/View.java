@@ -2,16 +2,13 @@ package part_2_reusable;
 
 import part_2_reusable.records.Currency;
 import part_2_reusable.records.Product;
-import part_2_reusable.utilities.CurrencyConverter;
-import part_2_reusable.utilities.Table;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class View {
-    public View(List<Product> products, Currency selectedCurrency) {
+    public View(List<Product> products) {
         System.out.println("Part 2: Reusable 🟢");
-        generateTable(products, selectedCurrency);
+        generateTable(products);
         showPrompt();
     }
 
@@ -25,21 +22,23 @@ public class View {
         System.out.print("Choose an option and then press enter: ");
     }
 
-    public void generateTable(List<Product> products, Currency selectedCurrency) {
-        List<Integer> columnsWidth = List.of(15, 5, 50, 15);
-        List<String> headers = List.of("Name", "Image", "Description", "Price");
-        List<List<String>> rows = new ArrayList<>();
+    public void generateTable(List<Product> products) {
+        String header = "| Product         | Image | Description                                        | Price     |%n";
+        String border = "+-----------------+-------+----------------------------------------------------+-----------+%n";
+        String rowFormat = "| %-15s | %-5s | %-50s | %-10s |%n";
+
+        System.out.format(border);
+        System.out.format(header);
+        System.out.format(border);
 
         for (Product item : products) {
             String product = item.name();
             String image = item.image();
             String description = item.description();
-            String newPrice = CurrencyConverter.convert(item.price(), selectedCurrency);
+            int price = item.price();
 
-            List<String> row = List.of(product, image, description, newPrice);
-            rows.add(row);
+            System.out.format(rowFormat, product, image, description, price);
+            System.out.format(border);
         }
-
-        new Table(columnsWidth, headers, rows);
     }
 }
