@@ -1,6 +1,5 @@
 package part_2_reusable;
 
-import java.util.Currency;
 import java.util.Scanner;
 
 public class Controller {
@@ -28,8 +27,7 @@ public class Controller {
             view.showError();
         }
 
-        view.generateTable(model.getProducts(), model.getSelectedCurrency());
-        view.showPrompt();
+        view.update(model.getProducts(), model.getCurrencies(), model.getSelectedCurrency());
         requestInput();
     }
 }

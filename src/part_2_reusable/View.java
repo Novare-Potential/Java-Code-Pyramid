@@ -5,13 +5,13 @@ import part_2_reusable.records.Product;
 import part_2_reusable.utilities.CurrencyConverter;
 import part_2_reusable.utilities.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class View {
-    public View(List<Product> products, Currency selectedCurrency) {
+    public View(List<Product> products, List<Currency> currencies, Currency selectedCurrency) {
         System.out.println("Part 2: Reusable 🟢");
-        generateTable(products, selectedCurrency);
-        showPrompt();
+        update(products, currencies, selectedCurrency);
     }
 
     // Methods
@@ -19,21 +19,33 @@ public class View {
         System.out.println("Invalid number ⚠️");
     }
 
-    public void showPrompt() {
+    public void update(List<Product> products, List<Currency> currencies, Currency selectedCurrency) {
+        drawTableProducts(products, selectedCurrency);
+        drawTableCurrencies(currencies);
         System.out.print("Choose an currency and then press enter: ");
     }
 
-    public void generateTable(List<Product> products, Currency selectedCurrency) {
-        List<Integer> columnsWidth = List.of(5, 5, 15, 5);
+    private void drawTableCurrencies(List<Currency> currencies) {
+        List<Integer> columnsWidth = List.of(1, 15, 10);
+        List<String> headers = List.of("#", "Name", "Symbol");
+        List<List<String>> rows = new ArrayList<>();
+
+        for(Currency item: currencies) {
+            String option = String.valueOf(item.id());
+            String name = item.name();
+            String symbol = item.symbol();
+
+            List<String> newRow = List.of(option, name, symbol);
+            rows.add(newRow);
+        }
+
+        new Table(columnsWidth, headers, rows);
+    }
+
+    private void drawTableProducts(List<Product> products, Currency selectedCurrency) {
+        List<Integer> columnsWidth = List.of(15, 5, 50, 15);
         List<String> headers = List.of("Name", "Image", "Description", "Price");
-        List<List<String>> rows = List.of();
-        /*
-            rows = [
-                row [flashlight, 🔦, 100],
-                row [box, 📦, 20],
-                row [can, 🥫, 50]
-            ]
-         */
+        List<List<String>> rows = new ArrayList<>();
 
         for (Product item : products) {
             String product = item.name();
