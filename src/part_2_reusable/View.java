@@ -3,7 +3,9 @@ package part_2_reusable;
 import part_2_reusable.records.Currency;
 import part_2_reusable.records.Product;
 import part_2_reusable.utilities.CurrencyConverter;
+import part_2_reusable.utilities.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class View {
@@ -24,22 +26,20 @@ public class View {
     }
 
     public void generateTable(List<Product> products, Currency selectedCurrency) {
-        String header = "| Product         | Image | Description                                        | Price |%n";
-        String rowFormat = "| %-15s | %-5s | %-50s | %-5s |%n";
-        String borderFormat = "+-----------------+-------+----------------------------------------------------+-------+%n";
-
-        System.out.format(borderFormat);
-        System.out.format(header);
-        System.out.format(borderFormat);
+        List<Integer> columnsWidth = List.of(15, 5, 50, 15);
+        List<String> headers = List.of("Name", "Image", "Description", "Price");
+        List<List<String>> rows = new ArrayList<>();
 
         for (Product item : products) {
-            String product = item.product();
+            String product = item.name();
             String image = item.image();
             String description = item.description();
-            String price = CurrencyConverter.convert(item.price(), selectedCurrency);
+            String newPrice = CurrencyConverter.convert(item.price(), selectedCurrency);
 
-            System.out.format(rowFormat, product, image, description, price);
-            System.out.format(borderFormat);
+            List<String> row = List.of(product, image, description, newPrice);
+            rows.add(row);
         }
+
+        new Table(columnsWidth, headers, rows);
     }
 }
